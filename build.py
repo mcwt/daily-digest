@@ -172,7 +172,41 @@ I("原来古诗词里的河南真的存在","到河南寻找古诗词里的地�
 I("蒸出了奶香爆米花馒头","爆米花和馒头结合的新奇面食。",[("搜索",xhs("蒸出了奶香爆米花馒头"))],heat="716.2万"),
 ]},
 }}
+
+CROSS={
+"10-26":[
+("卢拉赢得巴西大选连任","卢拉在第二轮击败弗拉维奥·博索纳罗，赢得第四个总统任期。",["微博","X"],[("微博","卢拉"),("X","卢拉")]),
+("武契奇承认败选","塞尔维亚学生运动推动的名单在议会选举中胜出，长期执政的武契奇认输。",["微博","X"],[("微博","武契奇"),("X","武契奇")]),
+("S16 瑞士轮：iG、TES 双双晋级 2-1 组","iG 击败 HLE、TES 击败 G2，两支 LPL 队伍同进 2-1 组。",["微博","知乎"],[("微博","iG 与 TES"),("知乎","HLE 0-1 iG"),("知乎","G2 0:1 TES")]),
+("姆巴佩绝杀，皇马终结巴萨连胜","国家德比 2 比 1，姆巴佩打进关键球。",["微博","知乎"],[("微博","姆巴佩"),("知乎","皇马 2-1")]),
+],
+"10-25":[
+("S16 世界赛：LPL 外战拿到首胜，TES 内战获胜","iG 拿下 LPL 在 S16 对外战的首胜，DK 翻盘 T1，LPL 队伍之间 TES 1:0 AL。",["微博","知乎"],[("微博","iG 拿下"),("微博","DK 世界赛"),("知乎","TES 1:0 AL")]),
+],
+"10-24":[
+("谷歌芬兰数据中心砍林引狼进村","据称未做环评，当局已叫停两处工地。X 与 Reddit 同时在讨论。",["X","Reddit"],[("X","谷歌芬兰")]),
+("诺基亚和 ICEYE 帮乌克兰建自主卫星网","Starlink 限速之后，乌克兰转向自建低轨通信卫星。X 与 Reddit 同时在讨论。",["X","Reddit"],[("X","诺基亚")]),
+("爱泼斯坦档案风波再起","白宫被指叫停调查，Ted Lieu 引用档案内容引发争吵。X 与 Reddit 同时在讨论。",["X","Reddit"],[("X","爱泼斯坦")]),
+("LPL 四队 S16 瑞士轮首轮全败","iG、TES、BLG、AL 首轮全输。知乎与微博同题。",["知乎","微博"],[("知乎","LPL 四队")]),
+("泽连斯基愿拿领土换和平，俄方同意恢复三方谈判","知乎与 X 同题；俄方说 11 月中旬恢复谈判。",["知乎","X"],[("知乎","泽连斯基")]),
+]}
+def resolve():
+    out={}
+    for day,lst in CROSS.items():
+        out[day]=[]
+        for t,d,pl,refs in lst:
+            links=[]
+            for pn,sub in refs:
+                for k,p in D[day]["p"].items():
+                    if k.startswith(pn):
+                        for it in p["items"]:
+                            if sub in it["t"]:
+                                for lb,u in it["l"]: links.append((pn+"·"+lb,u))
+                                break
+            out[day].append({"t":t,"d":d,"p":pl,"l":links})
+    return out
 days=sorted(D.keys(),reverse=True)
+for k,v in resolve().items(): D[k]['cross']=v
 data=json.dumps({"order":days,"days":D},ensure_ascii=False)
 html=open("template.html",encoding="utf-8").read().replace("__DATA__",data)
 open("index.html","w",encoding="utf-8").write(html)
