@@ -44,18 +44,6 @@ I("Altman / Cloudflare：AI 挖洞快过打补丁","奥特曼称不再相信发�
 I("西藏那曲巴青余震","10 月 22 日 7.0 级主震后，25 日当地再报约 5.7–5.9 与 5.1–5.2 级浅源余震，救援与安置仍在进行。",[("X 新闻","https://x.com/i/trending/2114336793986211991"),("相关帖","https://x.com/Drheavenj/status/2113452689577451554")]),
 I("AI「抹平专业门槛」争论再起","一则热帖主张医学、法律、编程等专长将被 AI 廉价化；另有讨论指向 AI 循环融资类似电信泡沫结构。",[("专业门槛","https://x.com/i/trending/2114249155002728522"),("循环融资","https://x.com/i/trending/2114179270192820666")]),
 ]},
-"Reddit":{"note":"过去约 24 小时；数据来自 Popular 聚合榜与公开报道","items":[
-I("塞尔维亚大选：武契奇向学生运动认输","长期执政的武契奇在议会选举中承认败给学生名单；初步得票约五成对四成。",[("r/news","https://www.reddit.com/r/news/comments/1xfe95s/serbias_vučić_concedes_election_defeat_to/"),("r/europe","https://www.reddit.com/r/europe/comments/1xfdjgh/vučić_concedes_defeat_in_serbian_elections_says/")],True),
-I("巴西大选刷屏：Lula 相关话题冲上 X 全球趋势","Macklemore 发帖强调巴西总统选举的全球影响。",[("r/Fauxmoi","https://www.reddit.com/r/Fauxmoi/comments/1xfc0k2/macklemore_shares_a_message_i_dont_think_yall/")],True),
-I("妮基·米娜杰被调侃为「白宫新闻秘书」","白宫通讯主任随口把 Nicki Minaj 当成新闻秘书人选拿出来玩，多个板块在吵。",[("r/popculturechat","https://www.reddit.com/r/popculturechat/comments/1xfemnx/nicki_minaj_floated_as_press_secretary/"),("r/politics","https://www.reddit.com/r/politics/comments/1xfe0oi/nicki_minaj_teased_as_new_white_house_press/")]),
-I("r/opensource 新规：禁 AI、禁非英语等","版主发新规则，AI 相关项目不受欢迎，还连带限制非英语用户，r/technology 也炸了。",[("r/technology","https://www.reddit.com/r/technology/comments/1xf2w9g/ropensource_just_banned_ai_nonenglish_speakers/")]),
-I("LG 智能电视被指关屏仍扫网、录环境音","调查称 LG 智能电视会映射家庭网络、屏关时仍可能采音频；厂商否认。",[("原帖","https://www.reddit.com/r/technology/comments/1xf9ssl/lg_smart_tvs_caught_mapping_your_network_logging/")]),
-I("基米·安东内利拿下 2026 美国大奖赛","F1 美国站 Antonelli 一停制胜，领先勒克莱尔和维斯塔潘。",[("r/formula1","https://www.reddit.com/r/formula1/comments/1xfeo9m/kimi_antonelli_wins_the_2026_united_states_grand/")]),
-I("Netflix：用户看得更少、打开 App 也更少","报道称人均观看和打开频率都在掉，评论区骂内容同质化和涨价。",[("r/movies","https://www.reddit.com/r/movies/comments/1xfaole/netflix_users_are_watching_less_not_opening_the/")]),
-I("Abdul El-Sayed 在底特律讲台上，父母在台下看着","密歇根参选相关集会照片火了。",[("r/pics","https://www.reddit.com/r/pics/comments/1xfbvxh/abdul_elsayeds_parents_looking_at_him_in_the/")]),
-I("H3 Podcast 无限期停更","Hila 指控 Ethan 出轨后，团队声明不再与 Ethan 合作，节目停摆。",[("Variety","https://variety.com/2026/digital/news/hila-ethan-klein-affair-h3-podcast-cuts-ties-1236925732/")]),
-I("AskReddit：什么饮料很难喝但大家还在喝？","经典跟帖局，评论区吵红牛、咖啡、精酿谁最难以下咽。",[("原帖","https://www.reddit.com/r/AskReddit/comments/1xf9iy4/what_drink_tastes_awful_but_lots_of_people_still/")]),
-]},
 "小红书":{"note":"小红书热榜（60s API）；榜单和 10 月 18 日以来基本一样","items":[
 I("用万能旅行拍照姿势美美出片","不挑景点的旅行拍照姿势。",[("搜索",xhs("用万能旅行拍照姿势美美出片"))],heat="947.5万"),
 I("耗时三年拍下古诗词里的中国","用照片还原古诗词里的风景。",[("搜索",xhs("耗时三年拍下古诗词里的中国"))],heat="934.8万"),
@@ -108,7 +96,7 @@ I("经济学博士生公开自己重度依赖 Claude 做研究","引发作者身
 I("中国「远望」超大型雷达船在海外引发热议","3 万吨级的航天测控和情报船，号称能同时跟踪 1200 个目标、覆盖 6000 公里。",[("X 新闻","https://x.com/i/trending/2114062232711799031")]),
 I("内罗毕在建高楼倒塌，7 人下落不明","10 月 23 日肯尼亚 Eastleigh 区一栋在建大楼倒塌，调查发现项目没有拿到郡政府审批。",[("X 新闻","https://x.com/i/trending/2113591099021541681")]),
 ]},
-"Reddit":{"note":"r/all、r/worldnews、r/technology、r/news 的 24 小时 Top 榜","items":[
+"Reddit（已停更）":{"note":"r/all、r/worldnews、r/technology、r/news 的 24 小时 Top 榜","items":[
 I("马斯克承认是他下令限制乌克兰的星链速度","乌克兰前线星链限速是他本人的决定；速度已恢复，军用版 Starshield 也恢复正常。路透社另报，美国政府多年来一直要求马斯克调整星链服务。",[("r/worldnews","https://www.reddit.com/r/worldnews/comments/1xej6q1/musk_says_he_was_behind_starlink_speed/"),("美方施压内幕","https://www.reddit.com/r/worldnews/comments/1xdvkj4/us_has_for_years_asked_musk_to_alter_starlink/"),("r/technology","https://www.reddit.com/r/technology/comments/1xegsww/ukraine_regains_normal_starlink_speeds_after_more/")],True),
 I("希特勒的「鹰巢」在德国被大火烧毁","10 月 24 日贝希特斯加登山上的鹰巢发生火灾，损毁严重，已有一人被拘留。",[("r/news","https://www.reddit.com/r/news/comments/1xe7t46/fire_devastates_the_eagles_nest_retreat_built_for/"),("r/pics","https://www.reddit.com/r/pics/comments/1xebpza/hitlers_eagles_nest_kehlsteinhaus_in_germany/")],True),
 I("Proton 不顾律师函，公开 30 万台 Flock 监控摄像头地图","隐私公司 Proton 继续托管一张标出全美超过 30 万台车牌识别摄像头的地图。",[("Proton 地图","https://www.reddit.com/r/technology/comments/1xdxq6z/proton_hosts_map_of_300000_flock_devices_amid/"),("警察滥用案","https://www.reddit.com/r/technology/comments/1xdvvt0/indiana_police_officer_arrested_for_using_flock/")],True),
