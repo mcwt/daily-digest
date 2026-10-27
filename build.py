@@ -18,6 +18,69 @@ I('JetBrains Thinkrail','JetBrains 推出 Thinkrail：围绕 pi 编码代理构�
 ]
 
 D={}
+# ---------- 10/27 ----------
+D["10-27"]={"label":"10月27日 周二","p":{
+"微博":{"note":"2026-10-27 09:03；🔥 为金球奖、LPL 一号种子出局与其他平台同题","items":[
+I('凯恩获2026年金球奖','哈里·凯恩拿下2026年金球奖，金球奖排名、前十名单和拜仁官推的庆祝同时上了热搜；他还获得了年度最佳射手奖。',[("微博热搜",'https://s.weibo.com/weibo?q=%E5%87%AF%E6%81%A9%E8%8E%B72026%E5%B9%B4%E9%87%91%E7%90%83%E5%A5%96')],True),
+I('LPL连续两年一号种子止步16强','S16全球总决赛瑞士轮中，LPL一号种子AL被淘汰止步16强，AL官方赛后致歉，相关话题刷屏。',[("微博热搜",'https://s.weibo.com/weibo?q=LPL%E8%BF%9E%E7%BB%AD%E4%B8%A4%E5%B9%B4%E4%B8%80%E5%8F%B7%E7%A7%8D%E5%AD%90%E6%AD%A2%E6%AD%A516%E5%BC%BA')],True),
+I('iOS27.2禁止摇一摇跳转','iOS 27.2 相关话题称将禁止“摇一摇”跳转，也就是打开 App 时被开屏广告摇一摇误跳转的情况。',[("微博热搜",'https://s.weibo.com/weibo?q=iOS27.2%E7%A6%81%E6%AD%A2%E6%91%87%E4%B8%80%E6%91%87%E8%B7%B3%E8%BD%AC')],False),
+I('中资网贷在印度亏七十亿退场','有报道称中资网贷公司在印度累计亏损约七十亿后退出市场，引发对出海金融业务风险的讨论。',[("微博热搜",'https://s.weibo.com/weibo?q=%E4%B8%AD%E8%B5%84%E7%BD%91%E8%B4%B7%E5%9C%A8%E5%8D%B0%E5%BA%A6%E4%BA%8F%E4%B8%83%E5%8D%81%E4%BA%BF%E9%80%80%E5%9C%BA')],False),
+I('数说中国外贸澎湃动能','官方用数据解读中国外贸的增长动能，属于今日热搜上的政务和经济类话题。',[("微博热搜",'https://s.weibo.com/weibo?q=%E6%95%B0%E8%AF%B4%E4%B8%AD%E5%9B%BD%E5%A4%96%E8%B4%B8%E6%BE%8E%E6%B9%83%E5%8A%A8%E8%83%BD')],False),
+I('新款iPadmini发布','新款 iPad mini 发布，128GB 起步存储的话题也上了热搜。',[("微博热搜",'https://s.weibo.com/weibo?q=%E6%96%B0%E6%AC%BEiPadmini%E5%8F%91%E5%B8%83')],False),
+I('国企欠款上千万元称先给十万八万','有国企被曝欠款上千万元，却只表示先付十万八万，引发对企业拖欠账款的关注。',[("微博热搜",'https://s.weibo.com/weibo?q=%E5%9B%BD%E4%BC%81%E6%AC%A0%E6%AC%BE%E4%B8%8A%E5%8D%83%E4%B8%87%E5%85%83%E7%A7%B0%E5%85%88%E7%BB%99%E5%8D%81%E4%B8%87%E5%85%AB%E4%B8%87')],False),
+I('城管摇了摊主好了顾客笑了','一段城管与摊主、顾客互动的暖心视频走红，是今天的社会正能量话题。',[("微博热搜",'https://s.weibo.com/weibo?q=%E5%9F%8E%E7%AE%A1%E6%91%87%E4%BA%86%E6%91%8A%E4%B8%BB%E5%A5%BD%E4%BA%86%E9%A1%BE%E5%AE%A2%E7%AC%91%E4%BA%86')],False),
+I('S16瑞士轮第四轮抽签','S16瑞士轮第四轮抽签出炉，iG对阵LYON、TES再次碰上BLG等对阵受到关注。',[("微博热搜",'https://s.weibo.com/weibo?q=S16%E7%91%9E%E5%A3%AB%E8%BD%AE%E7%AC%AC%E5%9B%9B%E8%BD%AE%E6%8A%BD%E7%AD%BE')],False),
+I('不刷牙吃早餐vs不刷牙睡觉','网友讨论不刷牙吃早餐和不刷牙睡觉哪个对牙齿危害更大，是一条贴近生活的健康话题。',[("微博热搜",'https://s.weibo.com/weibo?q=%E4%B8%8D%E5%88%B7%E7%89%99%E5%90%83%E6%97%A9%E9%A4%90vs%E4%B8%8D%E5%88%B7%E7%89%99%E7%9D%A1%E8%A7%89')],False),
+]},
+"X":{"note":"北京时间 10 月 27 日；🔥 为 GPT-6.1、OpenAI 科研成果、金球奖与其他平台同题","items":[
+I('OpenAI 发布 GPT-6.1 Terra','主打视觉推理和电脑操作，号称比 GPT-5.6 高 15 分、价格约三分之一、速度三倍以上；API 每百万 token 输入 1 美元、输出 5 美元，已向 Plus/Pro 等用户开放。',[("X 新闻",'https://x.com/i/trending/2114782259219771698')],True),
+I('OpenAI 内部模型宣称数学、计算机、物理三项突破','包括局部光滑化猜想证明、用 Lean 验证的指数时间假设（ETH）反驳、以及相互作用量子场论（含 QCD、Yang-Mills）存在性证明；材料已在 GitHub 公开，请学者协助验证，尚待同行确认。',[("X 新闻",'https://x.com/i/trending/2114840848353656891')],True),
+I('第 70 届金球奖在伦敦颁奖',"首次移出法国办，致敬首届得主斯坦利·马修斯；凯恩、亚马尔、姆巴佩是热门人选，巴黎圣日耳曼连续第二年获年度最佳俱乐部。Harry Kane、Mbappe、Ballon d'Or 霸占全球趋势。",[("X 新闻",'https://x.com/i/trending/2114723345011011640')],True),
+I('前 FBI 局长科米被以《间谍法》起诉','华盛顿联邦法院公开指控，称他 2016 年指使下属向《纽约时报》泄露雅虎邮件监控相关国防信息；科米称这是滥用权力。同日其女莫琳·科米被法官判定遭非法解雇、应复职。',[("X 新闻",'https://x.com/i/trending/2114832314974847105')],False),
+I('特朗普暂缓对伊朗动武，美股大涨','标普 500 涨 0.83%、纳指涨 1.38%，特斯拉涨约 6.5%，油价回落；但美方官员称部队可在 96 小时内对伊朗发起大规模打击，以色列内塔尼亚胡在本周大选前力推动手。',[("X 新闻",'https://x.com/i/trending/2114746075487907875')],False),
+I('本周超级周：美联储议息 + 微软、谷歌、亚马逊财报','周三美联储议息，预计维持 3.75%-4.00%，主席沃什发布会；同时有 GDP、PCE 数据和大量标普公司财报，市场预期波动加大。',[("X 新闻",'https://x.com/i/trending/2114432803248959935')],False),
+I('Gemini 4 Argon 冲上 AI 编程榜单','搭配 Antigravity 框架在 FrontierCS 2 等测试上超过 GPT-6 Astra；但有开发者反复收到谷歌“干扰服务”违规警告后弃用，谷歌已介入调查。',[("X 新闻",'https://x.com/i/trending/2114600497210380411')],False),
+I('分析：AI 对非科技公司尚无财务回报','阿波罗经济学家 Torsten Slok 发现，“七巨头”人均营收和利润率大涨，其余 493 家标普公司持平；另有观点担忧数据中心到 2030 年存在 4.9 万亿美元收入缺口。',[("X 新闻",'https://x.com/i/trending/2114067820980109751')],False),
+I('耶鲁论文：AGI 时代工资可能趋近于零',"经济学家 Pascual Restrepo 在《We Won't Be Missed》中推演，当 AI 自动化瓶颈任务后产出取决于算力而非劳动，劳动占 GDP 份额会萎缩；引发全民基本收入等讨论。",[("X 新闻",'https://x.com/i/trending/2114863062096187753')],False),
+I('“人类写代码永远比不过大模型？”程序员激辩','工程师 Arpit Bhayani 的断言引发争论：支持者认为大局已定，反对者指出 AI 修 bug 只治标、不会重构架构，复杂推理仍靠人。',[("X 新闻",'https://x.com/i/trending/2114473450643337305')],False),
+]},
+"小红书":{"note":"小红书热榜（60s API）；榜单与前几天一致","items":[
+I('用万能旅行拍照姿势美美出片','旅行拍照通用姿势教程，帮你出片',[("搜索",'https://www.xiaohongshu.com/search_result?keyword=%E7%94%A8%E4%B8%87%E8%83%BD%E6%97%85%E8%A1%8C%E6%8B%8D%E7%85%A7%E5%A7%BF%E5%8A%BF%E7%BE%8E%E7%BE%8E%E5%87%BA%E7%89%87&type=51')],heat='947.5万'),
+I('耗时三年拍下古诗词里的中国','创作者花三年拍摄古诗词意境中的中国风景',[("搜索",'https://www.xiaohongshu.com/search_result?keyword=%E8%80%97%E6%97%B6%E4%B8%89%E5%B9%B4%E6%8B%8D%E4%B8%8B%E5%8F%A4%E8%AF%97%E8%AF%8D%E9%87%8C%E7%9A%84%E4%B8%AD%E5%9B%BD&type=51')],heat='934.8万'),
+I('我拍到了海鸥雨','网友分享拍到成群海鸥飞过的画面',[("搜索",'https://www.xiaohongshu.com/search_result?keyword=%E6%88%91%E6%8B%8D%E5%88%B0%E4%BA%86%E6%B5%B7%E9%B8%A5%E9%9B%A8&type=51')],heat='903.2万'),
+I('超日常美食教程速来get','简单易学的家常菜做法合集',[("搜索",'https://www.xiaohongshu.com/search_result?keyword=%E8%B6%85%E6%97%A5%E5%B8%B8%E7%BE%8E%E9%A3%9F%E6%95%99%E7%A8%8B%E9%80%9F%E6%9D%A5get&type=51')],heat='886万'),
+I('定格这一刻的日照金山','记录雪山被朝阳染成金色的日照金山景观',[("搜索",'https://www.xiaohongshu.com/search_result?keyword=%E5%AE%9A%E6%A0%BC%E8%BF%99%E4%B8%80%E5%88%BB%E7%9A%84%E6%97%A5%E7%85%A7%E9%87%91%E5%B1%B1&type=51')],heat='871.1万'),
+I('你可以永远相信赛里木湖的美景','新疆赛里木湖的风景分享',[("搜索",'https://www.xiaohongshu.com/search_result?keyword=%E4%BD%A0%E5%8F%AF%E4%BB%A5%E6%B0%B8%E8%BF%9C%E7%9B%B8%E4%BF%A1%E8%B5%9B%E9%87%8C%E6%9C%A8%E6%B9%96%E7%9A%84%E7%BE%8E%E6%99%AF&type=51')],heat='783.1万'),
+I('拼豆上也可以作画了','用拼豆拼出画作的手工创意',[("搜索",'https://www.xiaohongshu.com/search_result?keyword=%E6%8B%BC%E8%B1%86%E4%B8%8A%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BD%9C%E7%94%BB%E4%BA%86&type=51')],heat='749.8万'),
+I('我的家庭旅行更像是打副本','带家人出行一路状况不断的旅行趣事',[("搜索",'https://www.xiaohongshu.com/search_result?keyword=%E6%88%91%E7%9A%84%E5%AE%B6%E5%BA%AD%E6%97%85%E8%A1%8C%E6%9B%B4%E5%83%8F%E6%98%AF%E6%89%93%E5%89%AF%E6%9C%AC&type=51')],heat='737.1万'),
+I('原来古诗词里的河南真的存在','河南实景与古诗词描写对照的风景分享',[("搜索",'https://www.xiaohongshu.com/search_result?keyword=%E5%8E%9F%E6%9D%A5%E5%8F%A4%E8%AF%97%E8%AF%8D%E9%87%8C%E7%9A%84%E6%B2%B3%E5%8D%97%E7%9C%9F%E7%9A%84%E5%AD%98%E5%9C%A8&type=51')],heat='727.8万'),
+I('蒸出了奶香爆米花馒头','用蒸锅做出爆米花风味奶香馒头的面食教程',[("搜索",'https://www.xiaohongshu.com/search_result?keyword=%E8%92%B8%E5%87%BA%E4%BA%86%E5%A5%B6%E9%A6%99%E7%88%86%E7%B1%B3%E8%8A%B1%E9%A6%92%E5%A4%B4&type=51')],heat='716.2万'),
+]},
+"Hacker News":{"note":"过去 24 小时按分数排序（截至 08:55）；🔥 为与 X 同题","items":[
+I('Anthropic 递交 S-1 招股书，正式启动 IPO','Anthropic 向美国 SEC 提交 S-1 文件，首次公开营收、亏损、算力开支和股权结构等细节。这是头部 AI 公司首次走向公开市场，今日 HN 分数和评论数都最高，大家在逐项拆解财务数据。',[("原文链接",'https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm'),("HN 讨论",'https://news.ycombinator.com/item?id=50242939')],False,heat='▲1456'),
+I('微软向约四分之一员工提供大规模自愿买断','《西雅图时报》报道，微软向大约 25% 的员工提供买断方案。规模罕见，评论区在讨论 AI 带来的裁员压力和大厂用工趋势。',[("原文链接",'https://www.seattletimes.com/business/microsoft/microsoft-offers-mass-buyouts-for-roughly-a-quarter-of-its-workforce/'),("HN 讨论",'https://news.ycombinator.com/item?id=50245524')],False,heat='▲728'),
+I('OpenAI 发布 GPT-6.1 Terra','OpenAI 推出新模型 GPT-6.1 Terra。同一天 OpenAI 还有两条科研成果帖上了首页，大家在对比它和 Anthropic、开源模型的能力与定价。',[("原文链接",'https://openai.com/index/introducing-gpt-6-1-terra/'),("HN 讨论",'https://news.ycombinator.com/item?id=50248124')],True,heat='▲485'),
+I('OpenAI 宣布数学、计算机科学和物理三项新发现','OpenAI 称其模型与学术团队合作，在三个领域取得新发现，其中一篇预印本声称推翻了“指数时间假设”（ETH），那篇论文也单独上了首页（214 分）。HN 上质疑和兴奋并存，大家都在等同行验证。',[("原文链接",'https://openai.com/index/building-scientific-understanding-with-academic-communities/'),("HN 讨论",'https://news.ycombinator.com/item?id=50251344')],True,heat='▲349'),
+I('Sebastian Raschka 推出从零构建推理模型的视频课程','知名 ML 作者 Raschka 发布配套视频课，手把手从零实现推理（reasoning）模型。实操性强，对想深入理解 LLM 推理训练的人很有用，所以收藏的人很多。',[("原文链接",'https://magazine.sebastianraschka.com/p/building-reasoning-models'),("HN 讨论",'https://news.ycombinator.com/item?id=50245138')],False,heat='▲534'),
+I('IBM CEO：开源权重模型已经好用又便宜，适合本地部署','IBM CEO 表示开放权重模型的质量和成本已足以让企业在本地部署。评论区在讨论企业到底选闭源 API 还是自建开源模型。同天 Cohere 一篇“某热门开源模型行为令人担忧”的文章（252 分）也引发了对开源模型安全的讨论。',[("原文链接",'https://www.theregister.com/systems/2026/10/22/ibm-ceo-says-open-weight-models-are-now-irresistibly-good-and-cheap-on-prem/5304640'),("HN 讨论",'https://news.ycombinator.com/item?id=50238088')],False,heat='▲414'),
+I('1:1 比例方块化的整个瑞士','一个用方块按 1:1 比例重建整个瑞士地形的网页项目，可以在浏览器里自由浏览。效果惊艳、技术有意思，是今天最受欢迎的趣味项目之一。',[("原文链接",'https://blocks.manifold3d.ch/'),("HN 讨论",'https://news.ycombinator.com/item?id=50240922')],False,heat='▲459'),
+I('CSS-Tricks 换了新东家','前端老牌教程站 CSS-Tricks 宣布被新东家接手。前端开发者普遍关心它会不会重新恢复更新，怀旧和期待的声音都有。',[("原文链接",'https://css-tricks.com/css-tricks-has-a-new-owner/'),("HN 讨论",'https://news.ycombinator.com/item?id=50245831')],False,heat='▲371'),
+I('Meta 员工公开谴责公司干预巴西大选','继昨天“Meta 无视巴西法院命令”一帖之后，Meta 内部员工也站出来批评公司在巴西大选中的做法。同一话题连续两天上 HN 首页，讨论很激烈。',[("原文链接",'https://www.panamericandispatch.org/p/meta-employees-denounce-interference'),("HN 讨论",'https://news.ycombinator.com/item?id=50248061')],False,heat='▲303'),
+I('至今仍能在 Windows 11 上运行的最古老 GUI 程序','作者考证了能在 Windows 11 上直接运行的最早期 Windows 图形程序，展示了微软惊人的向后兼容性。适合怀旧，也有技术考古的味道。',[("原文链接",'https://blog.enlyth.com/posts/oldest-windows-gui-app-win-11/'),("HN 讨论",'https://news.ycombinator.com/item?id=50248055')],False,heat='▲261'),
+]},
+"知乎":{"note":"知乎热榜；🔥 为与微博、X 同题","items":[
+I('S16 瑞士轮低分淘汰赛 AL 0:2 TLAW，被称为 LPL 历史最差一号种子，如何评价？','AL 被 TLAW 横扫出局，LPL 一号种子止步瑞士轮。',[("知乎",'https://www.zhihu.com/question/2098163161492711047')],True),
+I('2026 年第 70 届金球奖揭晓，凯恩获得最佳射手奖和金球奖，如何评价？','凯恩赛季 65 场 73 球，时隔 25 年英格兰球员再夺金球。',[("知乎",'https://www.zhihu.com/question/2098093756930942177')],True),
+I('江苏多所高校将用数字人民币发工资，和银行卡发工资有啥区别？','扬州大学等通知自 11 月起工资发到数币钱包，引发讨论。',[("知乎",'https://www.zhihu.com/question/2098056179788391425')],False),
+I('「南北」奥迪正式分家，四环归一汽，AUDI 归上汽，背后是什么商业考量？','奥迪中国宣布字母标 AUDI 归上汽、四环归一汽，品牌之争落定。',[("知乎",'https://www.zhihu.com/question/2098099746560631310')],False),
+I('国家为什么迟迟不肯挖掘秦始皇陵？','老问题再上榜，焦点是文物保护技术和主动发掘政策。',[("知乎",'https://www.zhihu.com/question/640845812')],False),
+I('老干妈回应「用 AI 把 600 名工人裁到 48 人」为不实信息，品牌能挽回信任吗？','官方热线称 AI 裁员传闻不实，此前高管发言曾被解读为裁员。',[("知乎",'https://www.zhihu.com/question/2098102680065237063')],False),
+I('哈利波特继承巨额遗产后，为什么不分点给姨夫姨妈报答养育之恩？','书迷讨论德思礼一家算不算「养育」，以及哈利的回报义务。',[("知乎",'https://www.zhihu.com/question/2089734782263608445')],False),
+I('你是怎么突然发现同事很有钱的？','网友分享同事「隐藏财力」被识破的瞬间。',[("知乎",'https://www.zhihu.com/question/521349541')],False),
+I('为什么广东那么潮湿却没养成吃辣椒祛湿的习惯？','从饮食传统、气候和「上火」观念解释粤菜少辣。',[("知乎",'https://www.zhihu.com/question/7406306582')],False),
+I('年轻人流行起「重养父母」，怎样看待这种反向哺育？边界如何把控？','教父母护肤、抢演唱会票，讨论代际反哺的分寸。',[("知乎",'https://www.zhihu.com/question/2088693226144281181')],False),
+]},
+}}
 # ---------- 10/26 ----------
 D["10-26"]={"label":"10月26日 周一","p":{
 "微博":{"note":"2026-10-26 09:00 更新；武契奇、卢拉、iG/TES、姆巴佩与其他平台同题","items":[
@@ -174,6 +237,12 @@ I("蒸出了奶香爆米花馒头","爆米花和馒头结合的新奇面食。",
 }}
 
 CROSS={
+"10-27":[
+("凯恩获第 70 届金球奖","金球奖首次移师伦敦颁奖，凯恩赛季 65 场 73 球，同时拿下最佳射手奖，时隔 25 年英格兰球员再夺金球。",["微博","X","知乎"],[("微博","凯恩"),("X","金球奖"),("知乎","金球奖")]),
+("OpenAI 发布 GPT-6.1 Terra","主打视觉推理和电脑操作，号称价格约为 GPT-5.6 的三分之一、速度三倍以上，HN 上在对比它和 Anthropic、开源模型。",["X","Hacker News"],[("X","GPT-6.1"),("Hacker News","GPT-6.1")]),
+("OpenAI 宣称数学、计算机、物理三项新发现","其中一篇预印本声称推翻指数时间假设（ETH），材料已公开，尚待同行验证。",["X","Hacker News"],[("X","三项突破"),("Hacker News","三项新发现")]),
+("LPL 一号种子 AL 止步 16 强","S16 瑞士轮低分淘汰赛 AL 0:2 TLAW 出局，LPL 连续两年一号种子止步 16 强。",["微博","知乎"],[("微博","LPL连续"),("知乎","AL 0:2")]),
+],
 "10-26":[
 ("卢拉赢得巴西大选连任","卢拉在第二轮击败弗拉维奥·博索纳罗，赢得第四个总统任期。",["微博","X"],[("微博","卢拉"),("X","卢拉")]),
 ("武契奇承认败选","塞尔维亚学生运动推动的名单在议会选举中胜出，长期执政的武契奇认输。",["微博","X"],[("微博","武契奇"),("X","武契奇")]),
