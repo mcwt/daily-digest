@@ -259,6 +259,22 @@ CROSS={
 ("LPL 四队 S16 瑞士轮首轮全败","iG、TES、BLG、AL 首轮全输。知乎与微博同题。",["知乎","微博"],[("知乎","LPL 四队")]),
 ("泽连斯基愿拿领土换和平，俄方同意恢复三方谈判","知乎与 X 同题；俄方说 11 月中旬恢复谈判。",["知乎","X"],[("知乎","泽连斯基")]),
 ]}
+# ---------- 10/28 (X + HN only; other platforms missing) ----------
+import os as _os
+def _load(day):
+    inbox="/workspace/digest-inbox"
+    p={}
+    fx=f"{inbox}/X-2026-{day}.json"
+    if _os.path.exists(fx):
+        j=json.load(open(fx,encoding="utf-8"))
+        p["X"]={"note":"北京时间 "+day.replace("-","月",1)+"日","items":[I(it["title"],it.get("summary",""),[("X 新闻",it["url"])],bool(it.get("cross_platform"))) for it in j["items"]]}
+    fh=f"{inbox}/hackernews-2026-{day}.json"
+    if _os.path.exists(fh):
+        j=json.load(open(fh,encoding="utf-8"))
+        p["Hacker News"]={"note":"过去 24 小时按分数排序","items":[I(it["标题"],it.get("说明",""),[("原文链接",it["原文链接"]),("HN 讨论",it["HN讨论链接"])],bool(it.get("🔥")),heat="▲"+str(it.get("分数",""))) for it in j["条目"]]}
+    return p
+D["10-28"]={"label":"10月28日 周三","p":_load("10-28")}
+CROSS.setdefault("10-28",[])
 def resolve():
     out={}
     for day,lst in CROSS.items():
