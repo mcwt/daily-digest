@@ -275,6 +275,30 @@ def _load(day):
     return p
 D["10-28"]={"label":"10月28日 周三","p":_load("10-28")}
 CROSS.setdefault("10-28",[])
+# ---------- 10/29 (all five platforms) ----------
+def _load29():
+    inbox="/workspace/digest-inbox"; day="2026-10-29"; p={}
+    HOT={"微博":["苹果发布会","iG时隔","西班牙列车","姆巴佩"],"知乎":["iG 2:1","西班牙高铁","姆巴佩"],"X":["eMudhra"],"Hacker News":["eMudhra","MacBook Pro"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-10-29 09:05；🔥 为与其他平台同题","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 10 月 29 日；🔥 为与 HN 同题","items":[I(it["title"],it.get("summary",""),[("X 新闻",it["url"])],hot("X",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）；榜单与前几天一致","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为与 X、微博同题","items":[I(it["title_zh"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it["hn_url"])],hot("Hacker News",it["title_zh"]),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜；🔥 为与微博同题","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"])) for it in j["items"]]}
+    return p
+D["10-29"]={"label":"10月29日 周四","p":_load29()}
+CROSS["10-29"]=[
+("iG 时隔 2565 天重返 S16 淘汰赛","iG 2:1 击败 LYON 晋级八强，成为本届首支进淘汰赛的 LPL 队伍，TheShy 表现成焦点。",["微博","知乎"],[("微博","iG时隔"),("知乎","iG 2:1")]),
+("西班牙高铁相撞已致 68 人死亡","托莱多附近两列高铁相撞，有中国公民受伤，初步调查指向人为失误。",["微博","知乎"],[("微博","西班牙列车"),("知乎","西班牙高铁")]),
+("苹果发布首款触屏 MacBook Pro","PROLED XDR 双层 OLED 屏、M5 Pro/Max，国行 22999 元起，10 月 30 日预购；HN 上为 Mac 加触屏吵翻了。",["微博","Hacker News"],[("微博","苹果发布会"),("Hacker News","MacBook Pro")]),
+("macOS 的 git 仍信任已泄露的 eMudhra 证书","Safari 已封禁，但 macOS 27.2 没覆盖 git 等命令行工具，存在中间人风险，HN 分数破千。",["X","Hacker News"],[("X","eMudhra"),("Hacker News","eMudhra")]),
+("姆巴佩涉华言论事件后续","姆巴佩已道歉、外交部回应「重视当事人道歉」，微博另传其恐面临巨额赔偿。",["微博","知乎"],[("微博","姆巴佩"),("知乎","姆巴佩")]),
+]
 def resolve():
     out={}
     for day,lst in CROSS.items():
