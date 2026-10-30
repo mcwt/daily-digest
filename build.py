@@ -299,6 +299,28 @@ CROSS["10-29"]=[
 ("macOS 的 git 仍信任已泄露的 eMudhra 证书","Safari 已封禁，但 macOS 27.2 没覆盖 git 等命令行工具，存在中间人风险，HN 分数破千。",["X","Hacker News"],[("X","eMudhra"),("Hacker News","eMudhra")]),
 ("姆巴佩涉华言论事件后续","姆巴佩已道歉、外交部回应「重视当事人道歉」，微博另传其恐面临巨额赔偿。",["微博","知乎"],[("微博","姆巴佩"),("知乎","姆巴佩")]),
 ]
+# ---------- 10/30 (all five platforms) ----------
+def _load30():
+    inbox="/workspace/digest-inbox"; day="2026-10-30"; p={}
+    HOT={"微博":["X教授"],"知乎":["谷歌美股"],"X":["币安","帕特里克"],"Hacker News":["斯图尔特","币安","Google 搜索"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-10-30 08:58；🔥 为与其他平台同题","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 10 月 30 日；🔥 为与微博、HN 同题","items":[I(it["title"],it.get("summary",""),[("X 新闻",it["url"])],hot("X",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）；榜单与前几天一致","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为与 X、微博、知乎同题","items":[I(it["title_zh"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it["hn_url"])],hot("Hacker News",it["title_zh"]),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜；🔥 为与 HN 同题","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"])) for it in j["items"]]}
+    return p
+D["10-30"]={"label":"10月30日 周五","p":_load30()}
+CROSS["10-30"]=[
+("“X 教授”“皮卡德舰长”帕特里克·斯图尔特去世","享年 86 岁，HN 罕见以 2000+ 分登顶，X 全球趋势前列，微博热搜同步上榜。",["微博","X","Hacker News"],[("微博","X教授"),("X","帕特里克"),("Hacker News","斯图尔特")]),
+("币安疑遭约 56 亿美元黑客攻击","热钱包异常转出，币安暂停充提，CZ 称损失由平台全额承担；Tether、Circle 已冻结部分资金。有币安账户的话留意官方公告、暂缓链上操作。",["X","Hacker News"],[("X","币安"),("Hacker News","币安")]),
+("谷歌财报后股价单日大跌超 13%","Alphabet 市值一日蒸发逾 5000 亿美元；HN 同时在讨论搜索收入已不到 Alphabet 总收入的一半。",["知乎","Hacker News"],[("知乎","谷歌美股"),("Hacker News","Google 搜索")]),
+]
 def resolve():
     out={}
     for day,lst in CROSS.items():
