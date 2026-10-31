@@ -321,6 +321,29 @@ CROSS["10-30"]=[
 ("币安疑遭约 56 亿美元黑客攻击","热钱包异常转出，币安暂停充提，CZ 称损失由平台全额承担；Tether、Circle 已冻结部分资金。有币安账户的话留意官方公告、暂缓链上操作。",["X","Hacker News"],[("X","币安"),("Hacker News","币安")]),
 ("谷歌股价单日大跌超 13%","Alphabet 市值一日蒸发逾 5000 亿美元；HN 同时在讨论搜索收入已不到 Alphabet 总收入的一半。",["知乎","Hacker News"],[("知乎","谷歌美股"),("Hacker News","Google 搜索")]),
 ]
+# ---------- 10/31 (all five platforms) ----------
+def _load31():
+    inbox="/workspace/digest-inbox"; day="2026-10-31"; p={}
+    HOT={"微博":["波兰","BLG"],"知乎":["英特尔股价","亚马逊自由现金流","369"],"X":["币安","波兰","隐形熊市"],"Hacker News":["Binance","AI 泡沫","科技股"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-10-31 09:04；🔥 为与其他平台同题","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 10 月 31 日；🔥 为与微博、HN、知乎同题","items":[I(it["title"],it.get("summary",""),[("X 新闻",it["url"])],hot("X",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）；榜单与前几天一致","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为与 X、知乎同题","items":[I(it["title_zh"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it["hn_url"])],hot("Hacker News",it["title_zh"]),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜；🔥 为与其他平台同题","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"])) for it in j["items"]]}
+    return p
+D["10-31"]={"label":"10月31日 周六","p":_load31()}
+CROSS["10-31"]=[
+("科技股大跌，“AI 泡沫”之争升温","英特尔单日暴跌 28.58% 创 52 年最大跌幅，亚马逊现金流转负、谷歌利润下滑；X 上在说标普近新高但六成成分股跌超 20% 的“隐形熊市”，HN 热议美国议员提案反对为 AI 泡沫纾困。",["知乎","X","Hacker News"],[("知乎","英特尔股价"),("知乎","亚马逊自由现金流"),("X","隐形熊市"),("Hacker News","AI 泡沫"),("Hacker News","科技股")]),
+("币安 63 亿美元被盗案后续","《连线》复盘称攻击只用了约 20 分钟，多方归因朝鲜黑客；CZ 称用户资金由 SAFU 和公司储备全额兜底。有币安账户的话继续留意官方公告。",["X","Hacker News"],[("X","币安"),("Hacker News","Binance")]),
+("波兰宪法法庭“夺权”风波","庭长被宣布停职、警方进入法院，总统纳夫罗茨基中断出访紧急回国，法庭方面称这是“政变”。",["微博","X"],[("微博","波兰"),("X","波兰")]),
+("S16 瑞士轮：TES 胜 BLG，抽签后 BLG 晋级难度骤降","TES 上单 369 赛后谈“想赢才兴奋、怕输才紧张”；微博上 S16 抽签、BLG 八强形势同时上榜。",["微博","知乎"],[("微博","BLG"),("知乎","369")]),
+]
 def resolve():
     out={}
     for day,lst in CROSS.items():
