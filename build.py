@@ -344,6 +344,28 @@ CROSS["10-31"]=[
 ("波兰宪法法庭“夺权”风波","庭长被宣布停职、警方进入法院，总统纳夫罗茨基中断出访紧急回国，法庭方面称这是“政变”。",["微博","X"],[("微博","波兰"),("X","波兰")]),
 ("S16 瑞士轮：TES 胜 BLG，抽签后 BLG 晋级难度骤降","TES 上单 369 赛后谈“想赢才兴奋、怕输才紧张”；微博上 S16 抽签、BLG 八强形势同时上榜。",["微博","知乎"],[("微博","BLG"),("知乎","369")]),
 ]
+# ---------- 11/01 (all five platforms) ----------
+def _load1101():
+    inbox="/workspace/digest-inbox"; day="2026-11-01"; p={}
+    HOT={"微博":["BLG战胜HLE","S16淘汰赛抽签"],"知乎":["BLG 2:0","八强赛抽签"],"X":["AI 泡沫"],"Hacker News":["OpenAI 最新一轮融资"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-11-01 09:01；🔥 为与其他平台同题","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 11 月 1 日；🔥 为与 HN 同题","items":[I(it["title"].replace("🔥","").strip(),it.get("summary",""),[("X 新闻",it["url"])]+[("相关帖",u) for u in it.get("extra_urls",[])],hot("X",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）；榜单与前几天一致","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为与 X 同题","items":[I(it["title_zh"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it["hn_url"])],hot("Hacker News",it["title_zh"]),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜；🔥 为与微博同题","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"])) for it in j["items"]]}
+    return p
+D["11-01"]={"label":"11月1日 周日","p":_load1101()}
+CROSS["11-01"]=[
+("S16 瑞士轮：BLG 2:0 横扫 HLE，拿下最后一张淘汰赛门票","HLE 止步十六强，成为 LCK 唯一没进淘汰赛的队伍；微博榜首、知乎榜首同题。",["微博","知乎"],[("微博","BLG战胜HLE"),("知乎","BLG 2:0")]),
+("S16 八强抽签出炉：BLG 对 DK，iG 与 TES 打内战","微博上 T1 抽到 KC 等衍生话题同时在榜。",["微博","知乎"],[("微博","S16淘汰赛抽签"),("知乎","八强赛抽签")]),
+("“AI 泡沫”争论升温，OpenAI 融资不到目标一半","X 上热议纳指本月或蒸发约 2 万亿美元、大厂 AI 投入回报存疑；HN 上《华尔街日报》称 OpenAI 这轮只募到 300 亿美元目标的不到一半。",["X","Hacker News"],[("X","AI 泡沫"),("Hacker News","OpenAI 最新一轮融资")]),
+]
 def resolve():
     out={}
     for day,lst in CROSS.items():
