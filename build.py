@@ -366,6 +366,27 @@ CROSS["11-01"]=[
 ("S16 八强抽签出炉：BLG 对 DK，iG 与 TES 打内战","微博上 T1 抽到 KC 等衍生话题同时在榜。",["微博","知乎"],[("微博","S16淘汰赛抽签"),("知乎","八强赛抽签")]),
 ("“AI 泡沫”争论升温，OpenAI 融资不到目标一半","X 上热议纳指本月或蒸发约 2 万亿美元、大厂 AI 投入回报存疑；HN 上《华尔街日报》称 OpenAI 这轮只募到 300 亿美元目标的不到一半。",["X","Hacker News"],[("X","AI 泡沫"),("Hacker News","OpenAI 最新一轮融资")]),
 ]
+# ---------- 11/02 (all five platforms; no strict same-event overlap, hero shows same-theme items) ----------
+def _load1102():
+    inbox="/workspace/digest-inbox"; day="2026-11-02"; p={}
+    HOT={"知乎":["巡逻机器人"],"X":["AI 编程","拒绝 AI 训练"],"Hacker News":["陶哲轩","提示词注入"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-11-02 09:02；今日与其他平台无明显同题","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 11 月 2 日；🔥 为与 HN、知乎同主题","items":[I(it["title"].replace("🔥","").strip(),it.get("summary",""),[("X 新闻",it["url"])]+[("相关帖",u) for u in it.get("extra_urls",[])],hot("X",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）；榜单与前几天一致","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为与 X 同主题","items":[I(it["title_zh"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it["hn_url"])],hot("Hacker News",it["title_zh"]),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜；🔥 为与 X、HN 同主题","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"])) for it in j["items"]]}
+    return p
+D["11-02"]={"label":"11月2日 周一","p":_load1102()}
+CROSS["11-02"]=[
+("AI 正在改写工作方式：编程、数学、安保岗位","X 上开发者争论 AI 编程到底提效多少，思科让工程师用 AI 重写 98% 旧代码；HN 上陶哲轩发文称“数学已经变了”；知乎热议江苏物业用巡逻机器人“一台抵 5 个保安”。今天没有同一事件跨平台，这是同主题。",["X","Hacker News","知乎"],[("X","AI 编程"),("Hacker News","陶哲轩"),("知乎","巡逻机器人")]),
+("AI 与内容规则：统一“拒绝训练”信号、律师藏提示词被罚","OpenAI、谷歌、微软、Anthropic 同意在 robots.txt 里认一个共享标记，站长一行就能拒绝内容被拿去训练；HN 上巴西法院处罚在诉状里做提示词注入的律师。",["X","Hacker News"],[("X","拒绝 AI 训练"),("Hacker News","提示词注入")]),
+]
 def resolve():
     out={}
     for day,lst in CROSS.items():
