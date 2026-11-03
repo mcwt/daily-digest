@@ -387,6 +387,29 @@ CROSS["11-02"]=[
 ("AI 正在改写工作方式：编程、数学、安保岗位","X 上开发者争论 AI 编程到底提效多少，思科让工程师用 AI 重写 98% 旧代码；HN 上陶哲轩发文称“数学已经变了”；知乎热议江苏物业用巡逻机器人“一台抵 5 个保安”。今天没有同一事件跨平台，这是同主题。",["X","Hacker News","知乎"],[("X","AI 编程"),("Hacker News","陶哲轩"),("知乎","巡逻机器人")]),
 ("AI 与内容规则：统一“拒绝训练”信号、律师藏提示词被罚","OpenAI、谷歌、微软、Anthropic 同意在 robots.txt 里认一个共享标记，站长一行就能拒绝内容被拿去训练；HN 上巴西法院处罚在诉状里做提示词注入的律师。",["X","Hacker News"],[("X","拒绝 AI 训练"),("Hacker News","提示词注入")]),
 ]
+# ---------- 11/03 (all five platforms) ----------
+def _load1103():
+    inbox="/workspace/digest-inbox"; day="2026-11-03"; p={}
+    HOT={"微博":["国乒"],"知乎":["国乒","比亚迪"],"X":["Anthropic 披露"],"Hacker News":["Anthropic 内部","比亚迪"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-11-03 09:04；🔥 为与知乎同题","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 11 月 3 日；🔥 为与 HN 同题","items":[I(it["title"].replace("🔥","").strip(),it.get("summary",""),[("X 新闻",it["url"])]+[("相关帖",u) for u in it.get("extra_urls",[])],hot("X",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）；榜单与前几天一致","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为与 X、知乎同题","items":[I(it["title_zh"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it["hn_url"])],hot("Hacker News",it["title_zh"]),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜；🔥 为与微博、HN 同题","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"])) for it in j["items"]]}
+    return p
+D["11-03"]={"label":"11月3日 周二","p":_load1103()}
+CROSS["11-03"]=[
+("新华社追问「国乒男队怎么了」","新华社发文指男子乒坛多极格局已成，微博榜首与知乎同题；同日微博还有「超20万人看了假乒乓球比赛」「樊振东2年没打WTT仍居第二」等关联讨论。",["微博","知乎"],[("微博","国乒"),("知乎","国乒")]),
+("Anthropic 财报与内部成本引热议","X 上披露 Q3 营收约 170 亿美元但巨额亏损、并警示安全阈值；HN 上 Business Insider 称内部 Claude 用量按零售价已超过员工薪酬。",["X","Hacker News"],[("X","Anthropic"),("Hacker News","Anthropic")]),
+("比亚迪销量继续刷屏","知乎解读 10 月车市：比亚迪近 49 万稳居第一，小米、小鹏齐破 5 万；HN 对比称比亚迪单月 EV 销量超过美国一整季。",["知乎","Hacker News"],[("知乎","比亚迪"),("Hacker News","比亚迪")]),
+]
+
 def resolve():
     out={}
     for day,lst in CROSS.items():
