@@ -410,6 +410,29 @@ CROSS["11-03"]=[
 ("比亚迪销量继续刷屏","知乎解读 10 月车市：比亚迪近 49 万稳居第一，小米、小鹏齐破 5 万；HN 对比称比亚迪单月 EV 销量超过美国一整季。",["知乎","Hacker News"],[("知乎","比亚迪"),("Hacker News","比亚迪")]),
 ]
 
+# ---------- 11/04 (all five platforms) ----------
+def _load1104():
+    inbox="/workspace/digest-inbox"; day="2026-11-04"; p={}
+    HOT={"微博":["特朗普回应中期","电诈园区"],"知乎":["电诈"],"X":["中期选举"],"Hacker News":["Astra","Qwen"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-11-04 08:58；🔥 为与 X、知乎同题/同主题","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 11 月 4 日；🔥 为与微博同题","items":[I(it["title"].replace("🔥","").strip(),it.get("summary",""),[("X 新闻",it["url"])]+[("相关帖",u) for u in it.get("extra_urls",[])],hot("X",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）；榜单与前几天一致","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为站内同话题多帖（Astra/Qwen 权重）","items":[I(it["title_zh"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it["hn_url"])],hot("Hacker News",it["title_zh"]),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜；🔥 为与微博同主题（电诈）","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"])) for it in j["items"]]}
+    return p
+D["11-04"]={"label":"11月4日 周三","p":_load1104()}
+CROSS["11-04"]=[
+("美国中期选举开票夜：民主党控两院预期升温","11 月 3 日全美改选，预测市场押民主党众议院约九成、参议院约七成；X 趋势被州选举与 Ossoff 等占据，微博同步热议「特朗普回应中期选举魔咒」「美国中期选举」。",["X","微博"],[("X","中期选举"),("微博","特朗普回应中期")]),
+("跨境电诈持续刷屏：园区外迁与海外留学生受害","微博热议电诈园区从柬埔寨迁至马达加斯加、当地捣毁窝点；知乎关注清华毕业生 UCL 留学疑遭电诈、账户转出数十万。同主题、不同事件。",["微博","知乎"],[("微博","电诈园区"),("知乎","电诈")]),
+]
+
+
 def resolve():
     out={}
     for day,lst in CROSS.items():
