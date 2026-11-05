@@ -433,6 +433,30 @@ CROSS["11-04"]=[
 ]
 
 
+# ---------- 11/05 (all five platforms) ----------
+def _load1105():
+    inbox="/workspace/digest-inbox"; day="2026-11-05"; p={}
+    HOT={"微博":["特朗普中期"],"X":["民主党中期","特朗普首度","数据中心","AMD"],"Hacker News":["数据中心","AMD","Gemini","Binance"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-11-05 08:59；🔥 为与 X 同题（中期选举）","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 11 月 5 日；🔥 为与微博、HN 同题/同主题","items":[I(it["title"].replace("🔥","").strip(),it.get("summary",""),[("X 新闻",it["url"])]+[("相关帖",u) for u in it.get("extra_urls",[])],hot("X",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）；榜单与前几天一致","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为与 X 同题/多平台热议","items":[I(it["title_zh"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it["hn_url"])],hot("Hacker News",it["title_zh"]),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜；今日与其他平台无明显同题","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"])) for it in j["items"]]}
+    return p
+D["11-05"]={"label":"11月5日 周四","p":_load1105()}
+CROSS["11-05"]=[
+("民主党横扫中期选举，特朗普首次公开回应","11 月 3 日开票后民主党夺回参众两院；特朗普在白宫新宴会厅工地首度露面，淡化弹劾担忧。X 趋势被 Jeffries、Schumer、Vance 等占据，微博热搜同步「特朗普中期选举失利后首次露面」。",["X","微博"],[("X","民主党中期"),("X","特朗普首度"),("微博","特朗普中期")]),
+("美国选民公投反对数据中心，马斯克喊「太空数据中心」","出口民调约 76% 反对本地新建数据中心；Semafor 报道多地选票明确抵制。数小时后马斯克称太空数据中心更有吸引力。X 与 HN 同日多帖。",["X","Hacker News"],[("X","数据中心"),("Hacker News","数据中心")]),
+("AMD 业绩与市占叙事升温","AMD Q3 营收 134 亿美元创新高、数据中心近翻倍；Tom's Hardware 称其 Q4 指引约 170 亿美元，出货有望史上首次压过英特尔。",["X","Hacker News"],[("X","AMD"),("Hacker News","AMD")]),
+]
+
+
 def resolve():
     out={}
     for day,lst in CROSS.items():
