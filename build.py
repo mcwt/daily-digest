@@ -457,6 +457,31 @@ CROSS["11-05"]=[
 ]
 
 
+# ---------- 11/06 (all five platforms) ----------
+def _load1106():
+    inbox="/workspace/digest-inbox"; day="2026-11-06"; p={}
+    HOT={"微博":["美股崩跌","温瑞博","BLG晋级"],"知乎":["美股创","王楚钦","BLG 3:0","数据中心"],"X":["数据中心","马来西亚","芯片股"],"Hacker News":["sshole","OpenSSH","Discord"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-11-06 08:58；🔥 为与 X、知乎同题（美股/数据中心、赛事）","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 11 月 6 日；🔥 为与微博、知乎同主题（数据中心/AI 基建）","items":[I(it["title"].replace("🔥","").strip(),it.get("summary",""),[("X 新闻",it["url"])]+[("相关帖",u) for u in it.get("extra_urls",[])],hot("X",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）；榜单与前几天一致","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为站内多帖/宣称跨平台热议（OpenSSH、Discord）","items":[I(it["title_zh"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it["hn_url"])],hot("Hacker News",it["title_zh"]) or bool(it.get("hot")),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜；🔥 为与微博、X 同题","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"]) or bool(it.get("hot"))) for it in j["items"]]}
+    return p
+D["11-06"]={"label":"11月6日 周五","p":_load1106()}
+CROSS["11-06"]=[
+("美股科技股大跌，AI 数据中心审批收紧成主因","纳指单日跌约 5.5% 创约 19 个月最大跌幅，费半重挫；市场担忧民主党中期大胜后联邦与多州收紧数据中心/AI 基建审批。微博榜首「美股崩跌原因」、知乎同题，X 同步热议谷歌赴马来西亚建数据中心、Blankfein 批阻挠数据中心等。",["微博","知乎","X"],[("微博","美股崩跌"),("知乎","美股创"),("知乎","数据中心"),("X","数据中心"),("X","马来西亚")]),
+("温瑞博 3:0 王楚钦，无缘 WTT 法兰克福八强","WTT 法兰克福冠军赛男单 1/8 决赛，温瑞博 11-7、11-8、11-6 击败队友王楚钦晋级；微博与知乎同题。",["微博","知乎"],[("微博","温瑞博"),("知乎","王楚钦")]),
+("BLG 3:0 淘汰 DK 晋级 S16 四强","英雄联盟 S16 四分之一决赛，LPL 二号种子 BLG 零封 LCK 四号种子 DK，队史第三次打进世界赛半决赛；微博与知乎同题。",["微博","知乎"],[("微博","BLG晋级"),("知乎","BLG 3:0")]),
+]
+
+
+
 def resolve():
     out={}
     for day,lst in CROSS.items():
