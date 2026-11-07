@@ -482,6 +482,29 @@ CROSS["11-06"]=[
 
 
 
+
+# ---------- 11/07 (all five platforms) ----------
+def _load1107():
+    inbox="/workspace/digest-inbox"; day="2026-11-07"; p={}
+    HOT={"微博":[],"知乎":[],"X":["Cybertruck"],"Hacker News":["Cybertruck"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-11-07 08:57；今日与其他平台无明显同题","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 11 月 7 日；🔥 为与 HN 同题（Cybertruck）","items":[I(it["title"].replace("🔥","").strip(),it.get("summary",""),[("X 新闻",it["url"])]+[("相关帖",u) for u in it.get("extra_urls",[])],hot("X",it["title"]) or bool(it.get("cross_platform"))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）；榜单与前几天一致","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为与 X 同题（Cybertruck）","items":[I(it["title_zh"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it["hn_url"])],hot("Hacker News",it["title_zh"]) or bool(it.get("hot")),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜；今日与其他平台无明显同题","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"]) or bool(it.get("hot"))) for it in j["items"]]}
+    return p
+D["11-07"]={"label":"11月7日 周六","p":_load1107()}
+CROSS["11-07"]=[
+("特斯拉将于 2027 年中停产 Cybertruck","马斯克称德州工厂明年中收尾 Cybertruck、产能让给 Cybercab；销量远低于目标。X 原帖近八百万曝光，HN 主帖八百多赞并有多帖刷屏。",["X","Hacker News"],[("X","Cybertruck"),("Hacker News","Cybertruck")]),
+]
+
+
 def resolve():
     out={}
     for day,lst in CROSS.items():
