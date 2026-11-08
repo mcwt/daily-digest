@@ -504,6 +504,28 @@ CROSS["11-07"]=[
 ("特斯拉将于 2027 年中停产 Cybertruck","马斯克称德州工厂明年中收尾 Cybertruck、产能让给 Cybercab；销量远低于目标。X 原帖近八百万曝光，HN 主帖八百多赞并有多帖刷屏。",["X","Hacker News"],[("X","Cybertruck"),("Hacker News","Cybertruck")]),
 ]
 
+# ---------- 11/08 (all five platforms) ----------
+def _load1108():
+    inbox="/workspace/digest-inbox"; day="2026-11-08"; p={}
+    HOT={"微博":["GEN战胜iG"],"知乎":["GEN 3-0"],"X":["Discord"],"Hacker News":["Discord"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-11-08 09:06；🔥 为与知乎同题（GEN/iG）","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 11 月 8 日；🔥 为与 HN 同题（Discord）","items":[I(it["title"].replace("🔥","").strip(),it.get("summary",""),[("X 新闻",it["url"])]+[("相关帖",u) for u in it.get("extra_urls",[])],hot("X",it["title"]) or bool(it.get("cross_platform"))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）；榜单与前几天一致","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为与 X 同题（Discord）；微软研究院 AI Frontiers 为站内多帖","items":[I(it["title_zh"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it["hn_url"])],hot("Hacker News",it["title_zh"]) or bool(it.get("hot")),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜；🔥 为与微博同题（GEN/iG）","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"]) or bool(it.get("hot"))) for it in j["items"]]}
+    return p
+D["11-08"]={"label":"11月8日 周日","p":_load1108()}
+CROSS["11-08"]=[
+("Discord 用 Rust 与 GPUI 重写客户端，内存可降约七成","Discord 正抛弃 Electron 与 React Native，用 Zed 同款 GPUI 以 Rust 重写桌面端；双账号同时登录约 290MB，大致省七成，冷启动从约 7 秒降到约 2 秒。X 与 HN 同题，CTO 对比视频在 X 上超两百万播放。",["X","Hacker News"],[("X","Discord"),("Hacker News","Discord")]),
+("GEN 3-0 横扫 iG 晋级 S16 决赛","英雄联盟 S16 半决赛首日，LCK 一号种子 GEN 零封 LPL 的 iG，iG 止步四强；另一支 LPL 战队 BLG 将于 11 月 9 日 6:00 对阵 T1 争夺最后一张决赛门票。微博榜首、知乎榜首同题。",["微博","知乎"],[("微博","GEN战胜iG"),("知乎","GEN 3-0")]),
+]
+
 
 def resolve():
     out={}
