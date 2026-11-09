@@ -538,7 +538,7 @@ def _load1109():
     j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
     p["小红书"]={"note":"小红书热榜（60s API）；榜单与前几天一致","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
     j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
-    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为与微博/知乎同题（黄仁勋事件）","items":[I(it["title_zh"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it["hn_url"])],hot("Hacker News",it["title_zh"]) or bool(it.get("hot")),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为与微博/知乎同题（黄仁勋事件）","items":[I(it.get("title_zh") or it["title"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it["hn_url"])],hot("Hacker News",it.get("title_zh") or it["title"]) or bool(it.get("hot")),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
     j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
     p["知乎"]={"note":"知乎热榜；🔥 为与微博/HN 同题","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"]) or bool(it.get("hot"))) for it in j["items"]]}
     return p
