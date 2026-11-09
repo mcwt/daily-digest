@@ -526,6 +526,29 @@ CROSS["11-08"]=[
 ("GEN 3-0 横扫 iG 晋级 S16 决赛","英雄联盟 S16 半决赛首日，LCK 一号种子 GEN 零封 LPL 的 iG，iG 止步四强；另一支 LPL 战队 BLG 将于 11 月 9 日 6:00 对阵 T1 争夺最后一张决赛门票。微博榜首、知乎榜首同题。",["微博","知乎"],[("微博","GEN战胜iG"),("知乎","GEN 3-0")]),
 ]
 
+# ---------- 11/09 (all five platforms) ----------
+def _load1109():
+    inbox="/workspace/digest-inbox"; day="2026-11-09"; p={}
+    HOT={"微博":["黄仁勋承认","BLG对战T1","特朗普回应黄仁勋","黄仁勋女儿","AI漫剧"],"知乎":["黄仁勋","BLG VS T1","AI 漫剧"],"X":[],"Hacker News":["黄仁勋","英伟达董事会"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-11-09 08:57；🔥 为与知乎/HN 同题（黄仁勋、BLG vs T1、AI 漫剧）","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 11 月 9 日；今日与其他平台无明显同题","items":[I(it["title"].replace("🔥","").strip(),it.get("summary",""),[("X 新闻",it["url"])]+[("相关帖",u) for u in it.get("extra_urls",[])],hot("X",it["title"]) or bool(it.get("cross_platform"))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）；榜单与前几天一致","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为与微博/知乎同题（黄仁勋事件）","items":[I(it["title_zh"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it["hn_url"])],hot("Hacker News",it["title_zh"]) or bool(it.get("hot")),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜；🔥 为与微博/HN 同题","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"]) or bool(it.get("hot"))) for it in j["items"]]}
+    return p
+D["11-09"]={"label":"11月9日 周一","p":_load1109()}
+CROSS["11-09"]=[
+("英伟达 CEO 黄仁勋内部信承认婚外情，董事会启动独立调查","黄仁勋向员工发内部信承认对妻子不忠并道歉，英伟达董事会已启动独立调查；微博登顶热搜（含特朗普回应、女儿取消韩国行），知乎同题，HN 上多条帖子讨论治理风险。",["微博","知乎","Hacker News"],[("微博","黄仁勋承认"),("知乎","黄仁勋"),("Hacker News","英伟达董事会"),("Hacker News","黄仁勋致")]),
+("S16 半决赛 BLG 对 T1","中韩半决赛争夺最后一张决赛门票，微博、知乎同题热议。",["微博","知乎"],[("微博","BLG对战T1"),("知乎","BLG VS T1")]),
+("AI 漫剧的商业化争议","知乎：苏州大学大三学生宿舍做 AI 漫剧，不到一年营收超 300 万；微博：付鹏称 AI 漫剧全部亏损。",["微博","知乎"],[("微博","AI漫剧"),("知乎","AI 漫剧")]),
+]
+
 
 def resolve():
     out={}
