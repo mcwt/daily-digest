@@ -549,6 +549,28 @@ CROSS["11-09"]=[
 ("AI 漫剧的商业化争议","知乎：苏州大学大三学生宿舍做 AI 漫剧，不到一年营收超 300 万；微博：付鹏称 AI 漫剧全部亏损。",["微博","知乎"],[("微博","AI漫剧"),("知乎","AI 漫剧")]),
 ]
 
+# ---------- 11/10 (all five platforms) ----------
+def _load1110():
+    inbox="/workspace/digest-inbox"; day="2026-11-10"; p={}
+    HOT={"微博":["英伟达市值","美股高开"],"X":["Citi"],"知乎":[],"Hacker News":[]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-11-10 08:59；🔥 为与 X 同题（美股科技股 / 英伟达）","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 11 月 10 日","items":[I(it["title"].replace("🔥","").strip(),it.get("summary",""),[("X 新闻",it["url"])]+[("相关帖",u) for u in it.get("extra_urls",[])],hot("X",it["title"]) or bool(it.get("cross_platform"))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序","items":[I(it.get("title_zh") or it["title"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it["hn_url"])],bool(it.get("hot")),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],bool(it.get("hot"))) for it in j["items"]]}
+    return p
+D["11-10"]={"label":"11月10日 周二","p":_load1110()}
+CROSS["11-10"]=[
+("英伟达市值一夜蒸发 1.29 万亿，科技股与 AI 估值承压","微博热搜：英伟达市值一夜蒸发约 1.29 万亿元，同时美股高开高走、科技股大涨；X 上 Citi 因 AI 数据中心监管收紧担忧下调美股与科技评级。",["微博","X"],[("微博","英伟达市值"),("X","Citi")]),
+("AI 模型迭代与 AI 取代岗位/写码的讨论","HN：Claude Fable/Mythos 5.2 发布、Opus 5.5 被指变弱；X：Anthropic CEO 警告 AI 或取代一半初级白领岗位，开发者热议 AI 写码时代。",["X","Hacker News"],[("X","Anthropic"),("HN","Claude")]),
+]
+
 
 def resolve():
     out={}
