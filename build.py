@@ -571,6 +571,28 @@ CROSS["11-10"]=[
 ("AI 模型迭代与 AI 取代岗位/写码的讨论","HN：Claude Fable/Mythos 5.2 发布、Opus 5.5 被指变弱；X：Anthropic CEO 警告 AI 或取代一半初级白领岗位，开发者热议 AI 写码时代。",["X","Hacker News"],[("X","Anthropic"),("HN","Claude")]),
 ]
 
+# ---------- 11/11 (all five platforms) ----------
+def _load1111():
+    inbox="/workspace/digest-inbox"; day="2026-11-11"; p={}
+    HOT={"微博":["金鸡奖","梁家辉"],"知乎":["金鸡奖"],"X":["Claude"],"Hacker News":["AI 的使用","Gemini","AlphaProof"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-11-11 08:59；🔥 为与知乎同题（金鸡奖）","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 11 月 11 日","items":[I(it["title"].replace("🔥","").strip(),it.get("summary",""),[("X 新闻",it["url"])]+[("相关帖",u) for u in it.get("extra_urls",[])],bool(it.get("cross_platform"))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序","items":[I(it.get("title_zh") or it["title"],it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it.get("hn_url",it["url"]))],bool(it.get("hot")),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"]) or bool(it.get("hot"))) for it in j["items"]]}
+    return p
+D["11-11"]={"label":"11月11日 周三","p":_load1111()}
+CROSS["11-11"]=[
+("第 39 届金鸡奖揭晓：梁家辉封帝、高叶封后","微博热搜金鸡奖获奖名单及梁家辉拒绝工作人员帮拿奖杯的花絮，知乎同步讨论获奖名单。",["微博","知乎"],[("微博","金鸡奖"),("微博","梁家辉"),("知乎","梁家辉")]),
+("新一代 AI 模型发布与 AI 写码的利弊","X：新版 Claude 限制部分能力引发争议、Pichai 称今天的 AI 三年后过时；HN：Gemini 4 Carbon、AlphaProof Code 发布，同时有人指 AI 会让代码库变脆弱。",["X","Hacker News"],[("X","Anthropic"),("HN","Gemini"),("HN","AI 的使用")]),
+]
+
 
 def resolve():
     out={}
