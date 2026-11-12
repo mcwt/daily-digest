@@ -594,6 +594,29 @@ CROSS["11-11"]=[
 ]
 
 
+# ---------- 11/12 (all five platforms) ----------
+def _load1112():
+    inbox="/workspace/digest-inbox"; day="2026-11-12"; p={}
+    HOT={"微博":["金鸡奖"],"知乎":["金鸡奖"],"X":["黄仁勋"],"Hacker News":["黄仁勋"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-11-12 09:05；🔥 为与知乎同题（金鸡奖）","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 11 月 12 日；🔥 为与 HN 同题（黄仁勋）","items":[I(it["title"].replace("🔥","").strip(),it.get("summary",""),[("X 新闻",it["url"])]+[("相关帖",u) for u in it.get("extra_urls",[])],hot("X",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）；榜单与前几天一致","items":[I(it["title"],it.get("desc","").replace("（与昨日一致）",""),[("搜索",it["link"])],heat=it.get("heat","").replace("w","万")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为与 X 同题（黄仁勋）","items":[I((it.get("title_zh") or it["title"]).replace("🔥","").strip(),it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it.get("hn_url",it["url"]))],hot("Hacker News",(it.get("title_zh") or it["title"])) or bool(it.get("hot")),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜；🔥 为与微博同题（金鸡奖）","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"]) or bool(it.get("hot"))) for it in j["items"]]}
+    return p
+D["11-12"]={"label":"11月12日 周四","p":_load1112()}
+CROSS["11-12"]=[
+("英伟达董事会拟讨论黄仁勋去留","《纽约时报》《华尔街日报》报道董事会最早于周三讨论其去留，丑闻持续发酵；HN 同步热议英伟达准备罢免黄仁勋，公司称未发现机密泄露，股价剧烈波动。",["X","Hacker News"],[("X","黄仁勋"),("Hacker News","黄仁勋")]),
+("第 39 届金鸡奖最佳导演争议与颁奖两幕对比","知乎热议郑大圣凭《密档》爆冷击败申奥、蓝鸿春获最佳导演；微博则对比《给阿嬷的情书》获奖时掌声平淡、郑大圣获奖时起立鼓掌的两幕。",["微博","知乎"],[("微博","金鸡奖"),("知乎","金鸡奖")]),
+]
+
+
 def resolve():
     out={}
     for day,lst in CROSS.items():
