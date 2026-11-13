@@ -616,6 +616,29 @@ CROSS["11-12"]=[
 ("第 39 届金鸡奖最佳导演争议与颁奖两幕对比","知乎热议郑大圣凭《密档》爆冷击败申奥、蓝鸿春获最佳导演；微博则对比《给阿嬷的情书》获奖时掌声平淡、郑大圣获奖时起立鼓掌的两幕。",["微博","知乎"],[("微博","金鸡奖"),("知乎","金鸡奖")]),
 ]
 
+# ---------- 11/13 (all five platforms) ----------
+def _load1113():
+    inbox="/workspace/digest-inbox"; day="2026-11-13"; p={}
+    HOT={"微博":["英伟达","Outlook"],"知乎":["刘欢"],"X":["Outlook"],"Hacker News":["黄仁勋","Microsoft"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-11-13 08:59；🔥 为与其他平台同题","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"]) or bool(it.get("cross_platform"))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 11 月 13 日；🔥 为与 HN/微博同题（Outlook）","items":[I(it["title"].replace("🔥","").strip(),it.get("summary",""),[("X 新闻",it["url"])]+[("相关帖",u) for u in it.get("extra_urls",[])],hot("X",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）","items":[I(it["title"],it.get("desc",""),[("搜索",it["link"])],heat=it.get("heat","")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为与微博/X 同题","items":[I((it.get("title_zh") or it["title"]).replace("🔥","").strip(),it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it.get("hn_url",it["url"]))],hot("Hacker News",(it.get("title_zh") or it["title"])),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜；🔥 为与微博同题（刘欢）","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"]) or bool(it.get("hot"))) for it in j["items"]]}
+    return p
+D["11-13"]={"label":"11月13日 周五","p":_load1113()}
+CROSS["11-13"]=[
+("黄仁勋辞任英伟达 CEO，股价大跌 13%","HN 上美联社报道黄仁勋辞任（近 2900 分、最热话题）；微博热搜英伟达大跌 13%，并翻出临时 CEO 的任职背景。",["微博","Hacker News"],[("微博","英伟达大跌"),("微博","英伟达临时"),("Hacker News","黄仁勋")]),
+("微软 Outlook / Microsoft 365 全球服务降级","HN 上 Microsoft 365 降级、Azure 是否宕机的讨论；微博 Outlook 宕机热搜；X 趋势榜同步热议。",["微博","X","Hacker News"],[("微博","微软Outlook"),("X","Outlook"),("Hacker News","Microsoft")]),
+("刘欢去世后续：死因披露与妻子长文","知乎热榜第一：死因系感染性休克、与膀胱癌抗争十几年；微博热搜刘欢妻子长文。",["微博","知乎"],[("微博","刘欢"),("知乎","刘欢")]),
+]
+
 
 def resolve():
     out={}
