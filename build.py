@@ -639,6 +639,28 @@ CROSS["11-13"]=[
 ("刘欢去世后续：死因披露与妻子长文","知乎热榜第一：死因系感染性休克、与膀胱癌抗争十几年；微博热搜刘欢妻子长文。",["微博","知乎"],[("微博","刘欢"),("知乎","刘欢")]),
 ]
 
+# ---------- 11/14 (all five platforms) ----------
+def _load1114():
+    inbox="/workspace/digest-inbox"; day="2026-11-14"; p={}
+    HOT={"微博":["停飞","黄仁勋"],"知乎":["航班"],"X":["FAA"],"Hacker News":["FAA","黄仁勋","Outlook"],"小红书":["黄仁勋"]}
+    def hot(pl,t): return any(k in t for k in HOT.get(pl,[]))
+    j=json.load(open(f"{inbox}/微博-{day}.json",encoding="utf-8"))
+    p["微博"]={"note":"2026-11-14 08:59；🔥 为与其他平台同题","items":[I(it["title"],it.get("summary",""),[("微博热搜",it["url"])],hot("微博",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/X-{day}.json",encoding="utf-8"))
+    p["X"]={"note":"北京时间 11 月 14 日；🔥 为与微博/HN/知乎同题（FAA 停飞）","items":[I(it["title"].replace("🔥","").strip(),it.get("summary",""),[("X 新闻",it["url"])],hot("X",it["title"])) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/xiaohongshu-{day}.json",encoding="utf-8"))
+    p["小红书"]={"note":"小红书热榜（60s API）；🔥 为与微博/HN 同题","items":[I(it["title"],it.get("desc",""),[("搜索",it["link"])],hot("小红书",it["title"]),heat=it.get("heat","")) for it in j]}
+    j=json.load(open(f"{inbox}/hackernews-{day}.json",encoding="utf-8"))
+    p["Hacker News"]={"note":"过去 24 小时按分数排序；🔥 为与微博/X/知乎同题","items":[I((it.get("title_zh") or it["title"]).replace("🔥","").strip(),it.get("summary",""),[("原文链接",it["url"]),("HN 讨论",it.get("hn_url",it["url"]))],hot("Hacker News",(it.get("title_zh") or it["title"])),heat="▲"+str(it.get("points",""))) for it in j["items"]]}
+    j=json.load(open(f"{inbox}/zhihu-{day}.json",encoding="utf-8"))
+    p["知乎"]={"note":"知乎热榜；🔥 为与其他平台同题","items":[I(it["title"],it.get("summary",""),[("知乎",it["url"])],hot("知乎",it["title"]) or bool(it.get("hot"))) for it in j["items"]]}
+    return p
+D["11-14"]={"label":"11月14日 周六","p":_load1114()}
+CROSS["11-14"]=[
+("美国 FAA 下令全国地面停飞","FAA 以特殊情况/安全原因下令全美离港航班停飞，近 7000 航班延误或取消；微博、X、知乎、HN 同时登上热榜。",["微博","X","知乎","Hacker News"],[("微博","停飞"),("X","FAA"),("知乎","航班"),("Hacker News","FAA")]),
+("黄仁勋辞职风波持续发酵","微博热议其辞职或影响史上最大 IPO；HN 上英伟达员工请愿要求其回归；小红书同步热议。",["微博","Hacker News","小红书"],[("微博","黄仁勋"),("Hacker News","黄仁勋"),("小红书","黄仁勋")]),
+]
+
 
 def resolve():
     out={}
